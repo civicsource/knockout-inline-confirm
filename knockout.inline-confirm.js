@@ -1,12 +1,18 @@
-define(["jquery", "knockout"], function ($, ko) {
+(function (root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module.
+		define(["jquery", "knockout"], factory);
+	} else {
+		// Browser globals
+		root.amdWeb = factory(jQuery, ko);
+	}
+}(this, function ($, ko) {
 	ko.bindingHandlers.inlineConfirm = {
 		init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-
 			var span = $('<span></span>').addClass('button__text');
 			span.appendTo($(element));
 
 			$(element).click(function () {
-
 				var textValues = ko.utils.unwrapObservable(valueAccessor());
 				var submitFunction = ko.utils.unwrapObservable(allBindingsAccessor().submitFunction);
 				var timeOut = ko.utils.unwrapObservable(allBindingsAccessor().confirmTimeout) || 3000;
@@ -50,4 +56,4 @@ define(["jquery", "knockout"], function ($, ko) {
 			$(element).removeClass("is-busy");
 		}
 	};
-});
+}));
