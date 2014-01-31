@@ -4,7 +4,7 @@
 		define(["jquery", "knockout"], factory);
 	} else {
 		// Browser globals
-		root.amdWeb = factory(jQuery, ko);
+		factory(jQuery, ko);
 	}
 }(this, function ($, ko) {
 	ko.bindingHandlers.inlineConfirm = {
