@@ -8,7 +8,7 @@ This is a simple knockout binding that allows you to get a confirmation of actio
 bower install knockout-inline-confirm
 ```
 
-Then add `knockout.inline-confirm.js` to your project.
+Then add `knockout-inline-confirm.js` to your project.
 
 ##How to Use
 
