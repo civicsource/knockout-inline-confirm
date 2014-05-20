@@ -1,13 +1,13 @@
 {
   "name": "knockout-inline-confirm",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "knockout-inline-confirm.js",
   "ignore": [
     "node_modules",
     "bower_components"
   ],
   "dependencies": {
-    "knockout.js": "~3.0.0",
-    "jquery": "~2.1.0"
+    "knockout": "~3.1.0",
+    "jquery": "~1.10"
   }
 }
