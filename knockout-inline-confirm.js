@@ -41,7 +41,7 @@
 							if (typeof (submitFunction) !== 'function') {
 								throw new typeError('expected typeof "submitFunction" to be "function"');
 							}
-							submitFunction.call(ko.dataFor(this));
+							submitFunction.call(ko.dataFor(this), ko.dataFor(this));
 						}
 					}
 				}
