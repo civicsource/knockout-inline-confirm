@@ -67,11 +67,3 @@
 		}
 	};
 }));
-
-function ViewModel() {
-  this.execute = function(){
-    alert("executed");
-  };
-}
-
-ko.applyBindings(new ViewModel());
