@@ -23,9 +23,15 @@
 					if (stepIndex < textValues.length - 2) {
 						element.resetTimer = setTimeout(function () {
 							span.text(textValues[stepIndex]);
+							//Remove the bootstrap danger class.
+							$(element).removeClass("btn-danger");
 						}, timeOut);
 
 						span.text(textValues[stepIndex + 1]);
+						//Check if the element is bootstrapped. If so, add the bootstrap danger class.
+						if ($(element).attr("class").toLowerCase().indexOf("btn-") >= 0) {
+							$(element).addClass("btn-danger");
+						}
 					}
 					else if (stepIndex === textValues.length - 2) {
 
@@ -35,6 +41,8 @@
 						}
 
 						$(element).addClass("is-busy");
+						//Remove the bootstrap danger class.
+						$(element).removeClass("btn-danger");
 						span.text(textValues[textValues.length - 1]);
 
 						if (submitFunction) {
@@ -42,6 +50,8 @@
 								throw new typeError('expected typeof "submitFunction" to be "function"');
 							}
 							submitFunction.call(ko.dataFor(this), ko.dataFor(this));
+							//Reset the button after the function has finished executing.
+							span.text(textValues[0]);
 						}
 					}
 				}
@@ -57,3 +67,11 @@
 		}
 	};
 }));
+
+function ViewModel() {
+  this.execute = function(){
+    alert("executed");
+  };
+}
+
+ko.applyBindings(new ViewModel());
