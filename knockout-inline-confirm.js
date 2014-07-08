@@ -10,11 +10,13 @@
 	ko.bindingHandlers.inlineConfirm = {
 		init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
 			var span = $('<span></span>').addClass('button__text');
+			var progressBar = $("<div style='border-top: 2px solid'></div>");
 			span.appendTo($(element));
 
 			$(element).click(function () {
 				var textValues = ko.utils.unwrapObservable(valueAccessor());
 				var submitFunction = ko.utils.unwrapObservable(allBindingsAccessor().submitFunction);
+				var showTimer = ko.utils.unwrapObservable(allBindingsAccessor().showTimer) || false;
 				var timeOut = ko.utils.unwrapObservable(allBindingsAccessor().confirmTimeout) || 3000;
 				var disabled = ko.utils.unwrapObservable(allBindingsAccessor().disable);
 
@@ -25,9 +27,23 @@
 							span.text(textValues[stepIndex]);
 							//Remove the bootstrap danger class.
 							$(element).removeClass("btn-danger");
+							
+							//Remove the progress bar.
+							if (showTimer) {
+								progressBar.remove();
+							}
 						}, timeOut);
 
 						span.text(textValues[stepIndex + 1]);
+						
+						//Start progress bar.
+						if (showTimer){
+							var width = $(element).width();
+							progressBar.width(width);
+							progressBar.appendTo($(element));
+							progressBar.animate({width: 0}, timeOut, "linear");
+						}
+						
 						//Check if the element is bootstrapped. If so, add the bootstrap danger class.
 						if ($(element).attr("class").toLowerCase().indexOf("btn-") >= 0) {
 							$(element).addClass("btn-danger");
@@ -43,6 +59,13 @@
 						$(element).addClass("is-busy");
 						//Remove the bootstrap danger class.
 						$(element).removeClass("btn-danger");
+						
+						//Stop the progress bar animation and remove it. 
+						if(showTimer) {
+							progressBar.stop(true, false);
+							progressBar.remove();
+						}
+						
 						span.text(textValues[textValues.length - 1]);
 
 						if (submitFunction) {
