@@ -1,6 +1,6 @@
 {
   "name": "knockout-inline-confirm",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "knockout-inline-confirm.js",
   "ignore": [
     "node_modules",
