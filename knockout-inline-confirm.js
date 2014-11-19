@@ -72,9 +72,10 @@
 							if (typeof (submitFunction) !== 'function') {
 								throw new typeError('expected typeof "submitFunction" to be "function"');
 							}
-							submitFunction.call(ko.dataFor(this), ko.dataFor(this));
-							//Reset the button after the function has finished executing.
-							span.text(textValues[0]);
+							$.when(submitFunction.call(ko.dataFor(this), ko.dataFor(this))).then(function () {
+								//Reset the button after the function has finished executing.
+								span.text(textValues[0]);
+							});
 						}
 					}
 				}
