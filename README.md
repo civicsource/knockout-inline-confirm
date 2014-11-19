@@ -31,3 +31,25 @@ The browser will not navigate to the `/remove` link until the user confirms the 
 ```
 
 This would allow the user to confirm their action before calling the `execute` function on the view model.
+
+
+###Working with promises
+
+in the following example
+```html
+<button data-bind="inlineConfirm: ['Execute', 'Are you really sure?', 'Executing'], submitFunction: execute"></button>
+```
+if the submitFunction executes asynchronously (an ajax request for example), 'Executing' will not appear when the function is executing unless the function returns the promise object since it does not know to wait until the promise resolves. Ex:
+
+```javascript
+this.executeReturningPromise = function () {
+			return $.ajax("http://myApi/items", {
+				type: "GET",
+			}).then(function (data) {
+				//do some stuff with the data
+			});
+		}
+```
+```html
+<button data-bind="inlineConfirm: ['Execute', 'Are you really sure?', 'Executing'], submitFunction: executeReturningPromise"></button>
+```
