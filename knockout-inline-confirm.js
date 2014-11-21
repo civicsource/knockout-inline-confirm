@@ -27,7 +27,7 @@
 							span.text(textValues[stepIndex]);
 							//Remove the bootstrap danger class.
 							$(element).removeClass("btn-danger");
-							
+
 							//Remove the progress bar.
 							if (showTimer) {
 								progressBar.remove();
@@ -35,15 +35,15 @@
 						}, timeOut);
 
 						span.text(textValues[stepIndex + 1]);
-						
+
 						//Start progress bar.
-						if (showTimer){
+						if (showTimer) {
 							var width = $(element).width();
 							progressBar.width(width);
 							progressBar.appendTo($(element));
-							progressBar.animate({width: 0}, timeOut, "linear");
+							progressBar.animate({ width: 0 }, timeOut, "linear");
 						}
-						
+
 						//Check if the element is bootstrapped. If so, add the bootstrap danger class.
 						if ($(element).attr("class").toLowerCase().indexOf("btn-") >= 0) {
 							$(element).addClass("btn-danger");
@@ -59,20 +59,20 @@
 						$(element).addClass("is-busy");
 						//Remove the bootstrap danger class.
 						$(element).removeClass("btn-danger");
-						
+
 						//Stop the progress bar animation and remove it. 
-						if(showTimer) {
+						if (showTimer) {
 							progressBar.stop(true, false);
 							progressBar.remove();
 						}
-						
+
 						span.text(textValues[textValues.length - 1]);
 
 						if (submitFunction) {
 							if (typeof (submitFunction) !== 'function') {
 								throw new typeError('expected typeof "submitFunction" to be "function"');
 							}
-							$.when(submitFunction.call(ko.dataFor(this), ko.dataFor(this))).then(function () {
+							$.when(submitFunction.call(ko.dataFor(this), ko.dataFor(this))).always(function () {
 								//Reset the button after the function has finished executing.
 								span.text(textValues[0]);
 							});
