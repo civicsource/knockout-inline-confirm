@@ -14,7 +14,7 @@ Then add `knockout-inline-confirm.js` to your project.
 
 ## Usage
 
-###Confirm a Link Click
+### Confirm a Link Click
 
 ```html
 <a href="/remove" data-bind="inlineConfirm: ['Remove', 'Are you sure?', 'Removing']"></a>
@@ -22,7 +22,7 @@ Then add `knockout-inline-confirm.js` to your project.
 
 The browser will not navigate to the `/remove` link until the user confirms the action.
 
-###Confirm a Button Action
+### Confirm a Button Action
 
 ```html
 <button data-bind="inlineConfirm: ['Execute', 'Are you really sure?', 'Executing'], submitFunction: execute"></button>
@@ -31,7 +31,7 @@ The browser will not navigate to the `/remove` link until the user confirms the 
 This would allow the user to confirm their action before calling the `execute` function on the view model.
 
 
-###Working with promises
+### Working with promises
 
 in the following example
 ```html
