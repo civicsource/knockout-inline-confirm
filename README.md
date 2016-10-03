@@ -4,19 +4,17 @@
 
 Read a [full introduction](http://dev.archoninfosys.com/2014/02/knockout-inline-confirm/) to this component with a small demo.
 
-##Install with [Bower](http://bower.io/)
+##Installation
 
 ```
-bower install knockout-inline-confirm
+npm install knockout-inline-confirm
 ```
 
 Then add `knockout-inline-confirm.js` to your project.
 
-##How to Use
+## Usage
 
-Include the script on your page (either via a normal script tag or via an AMD loader). Then bind it to a button or a link.
-
-###Confirm a Link Click
+### Confirm a Link Click
 
 ```html
 <a href="/remove" data-bind="inlineConfirm: ['Remove', 'Are you sure?', 'Removing']"></a>
@@ -24,7 +22,7 @@ Include the script on your page (either via a normal script tag or via an AMD lo
 
 The browser will not navigate to the `/remove` link until the user confirms the action.
 
-###Confirm a Button Action
+### Confirm a Button Action
 
 ```html
 <button data-bind="inlineConfirm: ['Execute', 'Are you really sure?', 'Executing'], submitFunction: execute"></button>
@@ -33,7 +31,7 @@ The browser will not navigate to the `/remove` link until the user confirms the 
 This would allow the user to confirm their action before calling the `execute` function on the view model.
 
 
-###Working with promises
+### Working with promises
 
 in the following example
 ```html

@@ -1,0 +1,31 @@
+{
+  "name": "knockout-inline-confirm",
+  "version": "2.0.0",
+  "description": "A simple binding to get confirmation from users inline before performing an action",
+  "main": "knockout-inline-confirm.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/civicsource/knockout-inline-confirm.git"
+  },
+  "keywords": [
+    "knockout",
+    "confirm",
+    "inline confirm"
+  ],
+  "dependencies": {
+    "jquery": ">=1.10"
+  },
+  "peerDependencies": {
+    "knockout": "3.x"
+  },
+  "author": "CivicSource",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/civicsource/knockout-inline-confirm/issues"
+  },
+  "homepage": "https://github.com/civicsource/knockout-inline-confirm#readme",
+  "devDependencies": {
+    "eslint": "^3.7.0",
+    "eslint-config-civicsource": "^1.1.1"
+  }
+}
