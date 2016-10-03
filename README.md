@@ -4,17 +4,15 @@
 
 Read a [full introduction](http://dev.archoninfosys.com/2014/02/knockout-inline-confirm/) to this component with a small demo.
 
-##Install with [Bower](http://bower.io/)
+##Installation
 
 ```
-bower install knockout-inline-confirm
+npm install knockout-inline-confirm
 ```
 
 Then add `knockout-inline-confirm.js` to your project.
 
-##How to Use
-
-Include the script on your page (either via a normal script tag or via an AMD loader). Then bind it to a button or a link.
+## Usage
 
 ###Confirm a Link Click
 
