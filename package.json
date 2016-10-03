@@ -23,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/civicsource/knockout-inline-confirm/issues"
   },
-  "homepage": "https://github.com/civicsource/knockout-inline-confirm#readme"
+  "homepage": "https://github.com/civicsource/knockout-inline-confirm#readme",
+  "devDependencies": {
+    "eslint": "^3.7.0",
+    "eslint-config-civicsource": "^1.1.1"
+  }
 }

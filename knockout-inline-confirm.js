@@ -2,8 +2,8 @@ var $ = require("jquery");
 var ko = require("knockout");
 
 ko.bindingHandlers.inlineConfirm = {
-	init: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-		var span = $('<span></span>').addClass('button__text');
+	init: function (element, valueAccessor, allBindingsAccessor) {
+		var span = $("<span></span>").addClass("button__text");
 		var progressBar = $("<div style='border-top: 2px solid'></div>");
 		span.appendTo($(element));
 
@@ -19,10 +19,10 @@ ko.bindingHandlers.inlineConfirm = {
 				if (stepIndex < textValues.length - 2) {
 					element.resetTimer = setTimeout(function () {
 						span.text(textValues[stepIndex]);
-						//Remove the bootstrap danger class.
+						// Remove the bootstrap danger class.
 						$(element).removeClass("btn-danger");
 
-						//Remove the progress bar.
+						// Remove the progress bar.
 						if (showTimer) {
 							progressBar.remove();
 						}
@@ -30,7 +30,7 @@ ko.bindingHandlers.inlineConfirm = {
 
 					span.text(textValues[stepIndex + 1]);
 
-					//Start progress bar.
+					// Start progress bar.
 					if (showTimer) {
 						var width = $(element).width();
 						progressBar.width(width);
@@ -38,12 +38,11 @@ ko.bindingHandlers.inlineConfirm = {
 						progressBar.animate({ width: 0 }, timeOut, "linear");
 					}
 
-					//Check if the element is bootstrapped. If so, add the bootstrap danger class.
+					// Check if the element is bootstrapped. If so, add the bootstrap danger class.
 					if ($(element).attr("class").toLowerCase().indexOf("btn-") >= 0) {
 						$(element).addClass("btn-danger");
 					}
-				}
-				else if (stepIndex === textValues.length - 2) {
+				} else if (stepIndex === textValues.length - 2) {
 
 					if (element.resetTimer) {
 						clearTimeout(element.resetTimer);
@@ -51,10 +50,10 @@ ko.bindingHandlers.inlineConfirm = {
 					}
 
 					$(element).addClass("is-busy");
-					//Remove the bootstrap danger class.
+					// Remove the bootstrap danger class.
 					$(element).removeClass("btn-danger");
 
-					//Stop the progress bar animation and remove it. 
+					// Stop the progress bar animation and remove it.
 					if (showTimer) {
 						progressBar.stop(true, false);
 						progressBar.remove();
@@ -63,23 +62,23 @@ ko.bindingHandlers.inlineConfirm = {
 					span.text(textValues[textValues.length - 1]);
 
 					if (submitFunction) {
-						if (typeof (submitFunction) !== 'function') {
-							throw new typeError('expected typeof "submitFunction" to be "function"');
+						if (typeof (submitFunction) !== "function") {
+							throw new TypeError("expected typeof \"submitFunction\" to be \"function\"");
 						}
 						$.when(submitFunction.call(ko.dataFor(this), ko.dataFor(this))).always(function () {
-							//Reset the button after the function has finished executing.
+							// Reset the button after the function has finished executing.
 							span.text(textValues[0]);
 						});
 					}
 				}
 			}
 
-			//let the click continue
+			// let the click continue
 			return !submitFunction && !disabled;
 		});
 	},
-	update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-		var span = $(element).find('.button__text');
+	update: function (element, valueAccessor) {
+		var span = $(element).find(".button__text");
 		span.text(ko.utils.unwrapObservable(valueAccessor())[0]);
 		$(element).removeClass("is-busy");
 	}
